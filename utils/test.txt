@@ -1,0 +1,23 @@
+{messages.map((message, index) => (
+            <div key={index} className="flex items-start mb-4">
+              {message.sender === 'bot' && (
+                <Avatar className="mr-3 h-8 w-8">
+                  <AvatarFallback>EB</AvatarFallback>
+                </Avatar>
+              )}
+              <div className="flex-1">
+                <div className={cn(
+                  "p-3 rounded-lg",
+                  message.sender === 'user' ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground"
+                )}>
+                  {message.text}
+                  {message.uncertain ? <p className="text-xs text-gray-500">Response might be uncertain</p> : null}
+                </div>
+              </div>
+              {message.sender === 'user' && (
+                <Avatar className="ml-3 h-8 w-8">
+                  <AvatarFallback>You</AvatarFallback>
+                </Avatar>
+              )}
+            </div>
+          ))}
